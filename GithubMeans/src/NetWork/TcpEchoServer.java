@@ -46,6 +46,7 @@ public class TcpEchoServer {
                 String response = process(request);
                 //把响应写回给客户端  写回的响应应该带上换行符
                 printWriter.println(response);
+                printWriter.flush();
                 //打印日志
                 System.out.printf("[%s:%d] req:%s,resp:%s\n",clientSocket.getInetAddress().toString()
                 ,clientSocket.getPort(),request,response);

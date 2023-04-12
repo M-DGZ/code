@@ -24,8 +24,9 @@ public class TcpEchoClient {
                 System.out.print("->:");
                 String request = scanner.next();
                 printWriter.println(request);
+                printWriter.flush();
                 String response = scannerFromSocket.next();
-                System.out.printf("req %s: resp resp",request,response);
+                System.out.printf("req %s: resp %s\n",request,response);
 
             }
         } catch (IOException e) {
