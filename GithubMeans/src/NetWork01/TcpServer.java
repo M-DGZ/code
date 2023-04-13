@@ -10,7 +10,7 @@ import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class TcpServer {
+public  class TcpServer {
     private ServerSocket serverSocket = null;
     public TcpServer(int port) throws IOException {
         this.serverSocket = new ServerSocket(port);
@@ -47,7 +47,7 @@ public class TcpServer {
             t.start();*/
         }
     }
-    private static void ProcessConnection(Socket clientSocket) throws IOException {
+    public void ProcessConnection(Socket clientSocket) throws IOException {
         System.out.printf("[%s: %d]客户端上线\n", clientSocket.getInetAddress().toString(), clientSocket.getPort());
         //通过clientSocket拿个一对stream对象 InputStream(读网卡)   OutputStream(写网卡)
         //try可以通过;的方式来写多个stream对象，在try代码块执行完成之后自动进行close
@@ -64,7 +64,7 @@ public class TcpServer {
                     break;
                 }
                 String request = scanner.next();
-                String response = process(request);
+               String response = process(request);
                 printWriter.println(response);
                 printWriter.flush();
                 System.out.printf("[%s :%d] req:%s resp:%s\n",clientSocket.getInetAddress().toString(),
@@ -76,7 +76,7 @@ public class TcpServer {
             clientSocket.close();
         }
     }
-    private static String process(String request) {
+    public  String process(String request) {
         return request;
     }
 
